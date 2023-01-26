@@ -1,0 +1,48 @@
+﻿@model Kino.Models.Seanse
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Dodaj Seans</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group p-2">
+                <label asp-for="Start" class="control-label"></label>
+                <input asp-for="Start" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+            <div class="form-group p-2">
+                <label asp-for="Cena" class="control-label"></label>
+                <input asp-for="Cena" class="form-control" />
+                <span asp-validation-for="Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group p-2">
+                <label asp-for="Film" class="control-label"></label>
+                <select asp-for="Film" class="form-control" asp-items=ViewBag.FilmyID>
+                    <option value="">---Wybierz Film---</option>
+                </select>
+            </div>
+            <div class="form-group p-2">
+                <label asp-for="kino" class="control-label"></label>
+                <select asp-for="kino" class="form-control" asp-items=ViewBag.KinaID>
+                    <option value="">---Wybierz Kino---</option>
+                </select>
+            </div>
+            <div class="form-group p-2">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="p-2" asp-action="Index">Powrót do listy seansów</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

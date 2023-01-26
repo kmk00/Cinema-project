@@ -1,0 +1,32 @@
+﻿@model Kino.Models.Filmy
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="d-flex flex-column align-items-center" >
+    <img src="/assets/@Model.Plakat" onerror=" this.src='/assets/placeholder.png'" width="300" height="450" />
+    <div class="row d-flex flex-column w-100">
+        <h1 class="text-center fw-bold border-bottom border-4 p-3">
+            @Html.DisplayFor(model => model.Tytul)
+        </h1>
+
+        <h2 class="mt-2">Reżyser <span class="text-white">|</span> @Html.DisplayFor(model => model.Rezyser.Imie) @Html.DisplayFor(model => model.Rezyser.Nazwisko)</h2>
+        <h3>
+            Rok produkcji <span class="text-white">|</span> @Html.DisplayFor(model => model.Rok)
+        </h3>
+        <h3>
+            Czas trwania <span class="text-white">|</span> @Html.DisplayFor(model => model.Czas_trwania) minut
+        </h3>
+        <h3>
+            Gatunek <span class="text-white">|</span> @Html.DisplayFor(model => model.Gatunek.Gatunek)
+        </h3>
+    </div>
+</div>
+<div>
+    <button class="back-btn my-2">
+        <a asp-action="Index">Powrót do repertuaru</a>
+    </button>
+</div>
+
+<a asp-action="Delete" asp-route-id="@Model?.Id_filmu">Usuń film</a>

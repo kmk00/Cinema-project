@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Kino.Models.Filmy>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center fw-bolder p-5">DOSTĘPNE PRODUKCJE</h1>
+
+<content class="d-flex flex-row text-center movies">
+@foreach (var item in Model) {
+    <a asp-action="Details" asp-route-id="@item.Id_filmu">
+        <div class="container p-3 mx-3 d-flex flex-column justify-content-center align-items-center scale">
+                <img src="/assets/@item.Plakat" onerror=" this.src='/assets/placeholder.png'" width="140" height="200" />
+            <h5 class="pt-2 text-normal text-uppercase">@Html.DisplayFor(modelItem => item.Tytul)</h5>
+        </div>
+    </a>
+
+}
+</content>
+<a asp-action="Create">Dodaj nowy film</a>
